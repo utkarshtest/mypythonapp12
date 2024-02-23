@@ -1,0 +1,20 @@
+name: CI
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout so job can access repo
+        uses: actions/checkout@v3
+
+      - name: install python
+        uses: actions/setup-python@v5.0.0
+        with: 
+          python-version: 3.11
+
+      - name: bandit install
+        run: pip install bandit
+
+      - name: run bandit command
+        run: bandit -r .
