@@ -14,7 +14,7 @@ with open('out.txt', 'r') as f:
             repo = os.environ.get('GITHUB_REPOSITORY')
             print(repo)
             # pr_number = os.environ.get('GITHUB_PR_NUMBER')
-            pr_number = 5
+            pr_number = "5"
             token = os.environ.get('GITHUB_TOKEN')
             print(token)
 
@@ -25,11 +25,11 @@ with open('out.txt', 'r') as f:
             response = requests.post(comment_url, json=comment_data, headers=headers)
             print(response.status_code)
             # Set the pull request status to failure
-            status_url = f"https://api.github.com/repos/{repo}/statuses/{os.environ.get('GITHUB_SHA')}"
-            status_data = {"state": "failure", "context": "security-check", "description": "Blocked due to high vulnerability"}
+            # status_url = f"https://api.github.com/repos/{repo}/statuses/{os.environ.get('GITHUB_SHA')}"
+            # status_data = {"state": "failure", "context": "security-check", "description": "Blocked due to high vulnerability"}
 
-            response = requests.post(status_url, json=status_data, headers=headers)
-            print(response.status_code)
+            # response = requests.post(status_url, json=status_data, headers=headers)
+            # print(response.status_code)
             sys.exit(2)
 
 sys.exit(0)
