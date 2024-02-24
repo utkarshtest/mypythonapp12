@@ -9,3 +9,5 @@ with open('out.txt', 'r') as f:
         if check_high(line):
             print("High Vulnerability Found, Blocked")
             sys.exit(2)
+        else:
+            sys.exit(0)
