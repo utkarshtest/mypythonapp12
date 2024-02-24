@@ -14,8 +14,10 @@ jobs:
           python-version: 3.11
 
       - name: bandit install
-        run: pip install bandit
-
+        run: |
+          pip install bandit
+          pip install sys
+          
       - name: run bandit command
         run: |
           bandit -r . -ll -ii -f custom --msg-template "{severity}" -o out.txt
