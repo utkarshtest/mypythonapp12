@@ -23,7 +23,7 @@ with open('out.txt', 'r') as f:
             headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
 
             response = requests.post(comment_url, json=comment_data, headers=headers)
-
+            print(response.status_code)
             # Set the pull request status to failure
             status_url = f"https://api.github.com/repos/{repo}/statuses/{os.environ.get('GITHUB_SHA')}"
             status_data = {"state": "failure", "context": "security-check", "description": "Blocked due to high vulnerability"}
