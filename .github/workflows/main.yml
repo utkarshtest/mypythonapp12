@@ -20,6 +20,6 @@ jobs:
       - name: run bandit command
         run: |
           bandit -r . -ll -ii -f custom --msg-template "{severity}" -o out.txt
-          python --help
+          python3 --help
           
         
