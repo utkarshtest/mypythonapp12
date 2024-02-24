@@ -13,8 +13,8 @@ with open('out.txt', 'r') as f:
             # Add a comment to the pull request
             repo = os.environ.get('GITHUB_REPOSITORY')
             print(repo)
-            pr_number = os.environ.get('GITHUB_PR_NUMBER')
-            print(pr_number)
+            # pr_number = os.environ.get('GITHUB_PR_NUMBER')
+            pr_number = 5
             token = os.environ.get('GITHUB_TOKEN')
             print(token)
 
