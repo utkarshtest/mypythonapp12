@@ -20,5 +20,9 @@ jobs:
       - name: run bandit command
         run: |
           bandit -r . -ll -ii -f custom --msg-template "{severity}" --exit-zero -o out.txt
-          python3 parser.py      
-        
+          python3 parser.py   
+
+      - name: automerge
+        uses: pascalgn/automerge-action@v0.16.2
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
