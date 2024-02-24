@@ -19,7 +19,7 @@ jobs:
         run: npm install -g retire
         
       - name: run retire 
-        run: retire -c --outputformat json
+        run: retire -c
         
       - name: upload artifacts
         if: always()
