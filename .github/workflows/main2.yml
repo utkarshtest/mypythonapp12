@@ -21,6 +21,9 @@ jobs:
       - name: run retire 
         run: retire .
 
+      - name: ls
+        run: ls
+
       # - name: upload artifacts
       #   if: always()
       #   uses: actions/upload-artifact@v4.3.1
