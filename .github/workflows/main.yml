@@ -18,6 +18,6 @@ jobs:
 
       - name: run bandit command
         run: | 
-          output = $(bandit -r . -ll  -ii -f custom --msg-template "{severity}")
+          output=$(bandit -r . -ll  -ii -f custom --msg-template "{severity}")
           echo "$output"
         
