@@ -27,6 +27,7 @@ jobs:
           python3 parser.py   
 
       - name: Merge pull request
-        run: |
+        env:
           GITHUB_PR_NUMBER: "${{ github.event.number }}"
+        run: |
           curl -X PUT -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -d '{"merge_method": "merge"}' "https://api.github.com/repos/${{ github.repository }}/pulls/$GITHUB_PR_NUMBER/merge"
