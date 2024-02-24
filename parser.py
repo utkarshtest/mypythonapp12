@@ -1,5 +1,6 @@
 import sys
 import os
+import requests
 
 def check_high(line):
     return line.strip() == "HIGH"
