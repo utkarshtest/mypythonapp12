@@ -17,7 +17,7 @@ jobs:
         run: pip install bandit
 
       - name: run bandit command
-        run: bandit -r . -ll -ii -f custom --msg-template "{severity}" | grep 'HIGH'
+        run: bandit -r . -ll -ii -f custom --msg-template "{severity}" | grep 'mEDIum'
           
           
         
