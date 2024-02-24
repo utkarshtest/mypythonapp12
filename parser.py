@@ -3,7 +3,7 @@ import sys
 def check_high(line):
     return line.strip() == "HIGH"
 
-
+print("hlol")
 with open('out.txt', 'r') as f:
     for line in f.readlines():
         if check_high(line):
