@@ -14,16 +14,15 @@ with open('out.txt', 'r') as f:
             repo = os.environ.get('GITHUB_REPOSITORY')
             print(repo)
             # pr_number = os.environ.get('GITHUB_PR_NUMBER')
-            pr_number = 1741748948
+            pr_number = 5
             token = os.environ.get('GITHUB_TOKEN')
-            print("aaaaaaa"+token+"aaaaaa")
-
+            
             comment_url = f"https://api.github.com/repos/{repo}/issues/{pr_number}/comments"
             comment_data = {"body": "Blocked - High Vulnerability Found"}
             headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
 
             response = requests.post(comment_url, json=comment_data, headers=headers)
-            print(response.status_code)
+            print(response.body)
             # Set the pull request status to failure
             # status_url = f"https://api.github.com/repos/{repo}/statuses/{os.environ.get('GITHUB_SHA')}"
             # status_data = {"state": "failure", "context": "security-check", "description": "Blocked due to high vulnerability"}
