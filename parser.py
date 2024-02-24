@@ -14,9 +14,9 @@ with open('out.txt', 'r') as f:
             repo = os.environ.get('GITHUB_REPOSITORY')
             print(repo)
             # pr_number = os.environ.get('GITHUB_PR_NUMBER')
-            pr_number = "5"
+            pr_number = 1741748948
             token = os.environ.get('GITHUB_TOKEN')
-            print(token)
+            print("aaaaaaa"+token+"aaaaaa")
 
             comment_url = f"https://api.github.com/repos/{repo}/issues/{pr_number}/comments"
             comment_data = {"body": "Blocked - High Vulnerability Found"}
