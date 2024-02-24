@@ -31,3 +31,4 @@ jobs:
           GITHUB_PR_NUMBER: "${{ github.event.number }}"
         run: |
           curl -X PUT -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -d '{"merge_method": "merge"}' "https://api.github.com/repos/${{ github.repository }}/pulls/$GITHUB_PR_NUMBER/merge"
+          curl -X POST -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -d "{\"body\":\"Successfull\"}" "https://api.github.com/repos/${{ github.repository }}/issues/$GITHUB_PR_NUMBER/comments"
