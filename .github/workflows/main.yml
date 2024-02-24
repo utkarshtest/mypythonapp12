@@ -18,10 +18,10 @@ jobs:
 
       - name: run bandit command
         run: |
-          output=$(bandit -r . -ll -ii -f custom --msg-template "{severity}" 2>&1)
-          echo "$output"
-          if echo "$output" | grep -q "HIGH"; then
+          - output=$(bandit -r . -ll -ii -f custom --msg-template "{severity}" 2>&1)
+          - echo "$output"
+          - if echo "$output" | grep -q "HIGH"; then
             echo "Blocked: HIGH severity vulnerability found by Bandit."
-          fi
+            fi
           
         
