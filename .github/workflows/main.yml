@@ -21,7 +21,7 @@ jobs:
       - name: run bandit command
         env:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          GITHUB_PR_NUMBER: ${{github.event.pull_request.number}}
+          GITHUB_PR_NUMBER: "${{ github.event.number }}"
         run: |
           bandit -r . -ll -ii -f custom --msg-template "{severity}" --exit-zero -o out.txt
           python3 parser.py   
