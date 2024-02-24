@@ -12,9 +12,11 @@ with open('out.txt', 'r') as f:
             print("High Vulnerability Found, Blocking PR")
             # Add a comment to the pull request
             repo = os.environ.get('GITHUB_REPOSITORY')
+            print(repo)
             pr_number = os.environ.get('GITHUB_PR_NUMBER')
             print(pr_number)
             token = os.environ.get('GITHUB_TOKEN')
+            print(token)
 
             comment_url = f"https://api.github.com/repos/{repo}/issues/{pr_number}/comments"
             comment_data = {"body": "Blocked - High Vulnerability Found"}
