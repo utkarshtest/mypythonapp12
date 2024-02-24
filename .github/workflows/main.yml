@@ -18,9 +18,8 @@ jobs:
           pip install bandit
           
       - name: run bandit command
-        run: |
-          bandit -r . -ll -ii -f custom --msg-template "{severity}" -o out.txt
-          echo "another command"
-          python3 parser.py 2>&1
+        run: bandit -r . -ll -ii -f custom --msg-template "{severity}" -o out.txt
+      - run: echo "another command"
+      - run: python3 parser.py 2>&1
                 
         
