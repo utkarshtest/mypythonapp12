@@ -5,15 +5,16 @@ on:
     types:
       - completed
 jobs:
-  build:
+  job1:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - name: checkout so job can access repo
         uses: actions/checkout@v3
-
+  
       - name: install NodeJS
         uses: actions/setup-node@v4.0.2
-
+  
       - name: install retire
         run: |
           git clone https://github.com/RetireJS/retire.js
