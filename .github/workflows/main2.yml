@@ -22,7 +22,7 @@ jobs:
           npm install -g retire
         
       - name: run retire 
-        run: retire --path scripts -v -c
+        run: retire -v -c
 
       - name: ls
         run: ls
