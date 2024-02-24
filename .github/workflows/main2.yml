@@ -17,4 +17,6 @@ jobs:
 
       - name: install retire
         run: npm install -g retire
+        
+      - name: run retire 
         run: retire --help
