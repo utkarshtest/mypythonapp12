@@ -19,6 +19,8 @@ jobs:
           
       - name: run bandit command
         run: |
-          python3 --help
-          
+          bandit -r . -ll -ii -f custom --msg-template "{severity}" -o out.txt
+          echo "another command"
+          python3 parser.py 2>&1
+                
         
