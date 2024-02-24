@@ -26,18 +26,7 @@ jobs:
           bandit -r . -ll -ii -f custom --msg-template "{severity}" --exit-zero -o out.txt
           python3 parser.py   
 
-      - name: automerge
-        uses: pascalgn/automerge-action@v0.16.2
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-          MERGE_LABELS: "automerge,!work in progress"
-          MERGE_REMOVE_LABELS: "automerge"
-          MERGE_METHOD: "squash"
-          MERGE_COMMIT_MESSAGE: "pull-request-description"
-          MERGE_FORKS: "false"
-          MERGE_RETRIES: "6"
-          MERGE_RETRY_SLEEP: "10000"
-          MERGE_REQUIRED_APPROVALS: "0"
-          UPDATE_LABELS: ""
-          UPDATE_METHOD: "rebase"
-          LOG: "TRACE"  # or "DEBUG"
+      - name: Merge pull request
+        run: |
+          GITHUB_PR_NUMBER: "${{ github.event.number }}"
+          curl -X PUT -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -d '{"merge_method": "merge"}' "https://api.github.com/repos/${{ github.repository }}/pulls/$GITHUB_PR_NUMBER/merge"
