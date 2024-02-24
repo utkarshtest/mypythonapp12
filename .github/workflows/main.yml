@@ -17,6 +17,8 @@ jobs:
         run: pip install bandit
 
       - name: run bandit command
-        run: bandit -r . -ll  -ii -f custom --msg-template "{severity}"
+        run: |
+          output=$(bandit -r . -ll  -ii -f custom --msg-template "{severity}")
+          echo "$output"
           
         
