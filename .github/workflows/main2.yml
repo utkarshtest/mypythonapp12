@@ -16,13 +16,10 @@ jobs:
         uses: actions/setup-node@v4.0.2
 
       - name: install retire
-        run: |
-          git clone https://github.com/RetireJS/retire.js
-          cd retire.js
-          npm install -g retire
+        run: npm install -g retire
         
       - name: run retire 
-        run: retire -v -c
+        run: retire -c --outputformat json --outputpath retire.json
 
       - name: ls
         run: ls
