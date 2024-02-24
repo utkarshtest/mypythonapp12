@@ -1,4 +1,5 @@
 import sys
+import os
 
 def check_high(line):
     return line.strip() == "HIGH"
@@ -7,7 +8,6 @@ print("hlol")
 with open('out.txt', 'r') as f:
     for line in f.readlines():
         if check_high(line):
-            print("High Vulnerability Found, Blocked")
             print("High Vulnerability Found, Blocking PR")
             # Add a comment to the pull request
             repo = os.environ.get('GITHUB_REPOSITORY')
