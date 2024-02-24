@@ -13,6 +13,7 @@ with open('out.txt', 'r') as f:
             # Add a comment to the pull request
             repo = os.environ.get('GITHUB_REPOSITORY')
             pr_number = os.environ.get('GITHUB_PR_NUMBER')
+            print(pr_number)
             token = os.environ.get('GITHUB_TOKEN')
 
             comment_url = f"https://api.github.com/repos/{repo}/issues/{pr_number}/comments"
@@ -26,6 +27,7 @@ with open('out.txt', 'r') as f:
             status_data = {"state": "failure", "context": "security-check", "description": "Blocked due to high vulnerability"}
 
             response = requests.post(status_url, json=status_data, headers=headers)
+            print(response.status_code)
             sys.exit(2)
 
 sys.exit(0)
