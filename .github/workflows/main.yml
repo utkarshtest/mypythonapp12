@@ -16,6 +16,7 @@ jobs:
       - name: bandit install
         run: |
           pip install bandit
+          pip install requests
           
       - name: run bandit command
         run: |
