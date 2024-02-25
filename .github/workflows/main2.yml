@@ -3,7 +3,7 @@ name: CI Main2
 on:
   pull_request:
     types: [closed]
-# on:
+# on: Another way of doing this - Use Workflow_run
 #   workflow_run:
 #     workflows: ["CI"]
 #     types:
@@ -11,7 +11,7 @@ on:
 jobs:
   job1:
     if: github.event.pull_request.merged == true
-    # if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    # if: ${{ github.event.workflow_run.conclusion == 'success' }} - Leaving it here for reference
     runs-on: ubuntu-latest
     steps:
       - name: checkout so job can access repo
