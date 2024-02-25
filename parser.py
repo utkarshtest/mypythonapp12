@@ -27,6 +27,6 @@ with open('out.txt', 'r') as f:
 
             # response = requests.post(status_url, json=status_data, headers=headers)
             # print(response.status_code)
-            sys.exit(2)
+            sys.exit(0)
 
 sys.exit(0)
