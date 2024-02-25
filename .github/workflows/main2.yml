@@ -2,8 +2,6 @@ name: CI Main2
 
 on:
   pull_request:
-    branches:
-      - master
     types: [closed]
 # on:
 #   workflow_run:
