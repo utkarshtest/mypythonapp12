@@ -19,7 +19,7 @@ with open('out.txt', 'r') as f:
             comment_data = {"body": "Blocked - High Vulnerability Found"}
             headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
             response = requests.post(comment_url, json=comment_data, headers=headers)
-            print(response.content)
+            # print(response.content)
            
             # print(response.status_code)
             sys.exit(0)
