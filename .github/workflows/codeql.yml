@@ -83,8 +83,4 @@ jobs:
       with:
         category: "/language:${{matrix.language}}"
 
-    - name: upload artifacts
-      uses: actions/upload-artifact@v4.3.1
-      with:
-        name: Python_File
-        path: python.sarif
+    
