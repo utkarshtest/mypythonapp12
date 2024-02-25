@@ -22,6 +22,6 @@ with open('out.txt', 'r') as f:
             # print(response.content)
            
             # print(response.status_code)
-            sys.exit(0)
+            sys.exit(2)
 
 sys.exit(0)
