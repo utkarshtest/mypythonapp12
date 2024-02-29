@@ -7,10 +7,12 @@ jobs:
     steps:
       - name: checkout so job can access repo
         uses: actions/checkout@v3
+
+      - name: Checkout tools repo
+        uses: actions/checkout@v4
         with:
-          repository: |
-            utkarshtest/mypythonapp12
-            utkarshtest/myjavaapp12
+          repository: utkarshtest/myjavaapp12
+          path: myjavaapp12
 
       - name: install python
         uses: actions/setup-python@v5.0.0
