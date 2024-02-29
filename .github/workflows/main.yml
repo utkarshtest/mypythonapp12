@@ -1,5 +1,5 @@
 name: CI
-on: [pull_request]
+on: [push]
 
 jobs:
   build:
@@ -7,6 +7,10 @@ jobs:
     steps:
       - name: checkout so job can access repo
         uses: actions/checkout@v3
+        with:
+          repository: |
+            utkarshtest/mypythonapp12
+            utkarshtest/myjavaapp12
 
       - name: install python
         uses: actions/setup-python@v5.0.0
@@ -23,21 +27,22 @@ jobs:
           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
           GITHUB_PR_NUMBER: "${{ github.event.number }}"
         run: |
-          bandit -r . -ll -ii -f json --exit-zero -o bandit.json   
-          bandit -r . -ll -ii -f custom --msg-template "{severity}" --exit-zero -o out.txt # for the sake of time, I choose this method - I know their are some better options to pick.
-          python3 parser.py   
+          ls
+          # bandit -r . -ll -ii -f json --exit-zero -o bandit.json   
+          # bandit -r . -ll -ii -f custom --msg-template "{severity}" --exit-zero -o out.txt # for the sake of time, I choose this method - I know their are some better options to pick.
+          # python3 parser.py   
 
-      - name: Merge pull request
-        env:
-          GITHUB_PR_NUMBER: "${{ github.event.number }}"
-        run: |
-          curl -X PUT -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -d '{"merge_method": "merge"}' "https://api.github.com/repos/${{ github.repository }}/pulls/$GITHUB_PR_NUMBER/merge"
-          curl -X POST -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -d "{\"body\":\"Successfull\"}" "https://api.github.com/repos/${{ github.repository }}/issues/$GITHUB_PR_NUMBER/comments"
-          curl -X PATCH -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" -d '{"state":"closed"}' "https://api.github.com/repos/${{ github.repository }}/pulls/$GITHUB_PR_NUMBER"
-      - name: upload artifacts
-        if: always()
-        uses: actions/upload-artifact@v4.3.1
-        with:
-          name: Python_File
-          path: bandit.json
+      # - name: Merge pull request
+      #   env:
+      #     GITHUB_PR_NUMBER: "${{ github.event.number }}"
+      #   run: |
+      #     curl -X PUT -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -d '{"merge_method": "merge"}' "https://api.github.com/repos/${{ github.repository }}/pulls/$GITHUB_PR_NUMBER/merge"
+      #     curl -X POST -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -d "{\"body\":\"Successfull\"}" "https://api.github.com/repos/${{ github.repository }}/issues/$GITHUB_PR_NUMBER/comments"
+      #     curl -X PATCH -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" -H "Accept: application/vnd.github.v3+json" -d '{"state":"closed"}' "https://api.github.com/repos/${{ github.repository }}/pulls/$GITHUB_PR_NUMBER"
+      # - name: upload artifacts
+      #   if: always()
+      #   uses: actions/upload-artifact@v4.3.1
+      #   with:
+      #     name: Python_File
+      #     path: bandit.json
         
